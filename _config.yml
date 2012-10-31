@@ -1,3 +1,5 @@
 markdown: rdiscount
+permalink: /:year/:month/:title/
+author: 焦凯
 pygments: true
 baseurl: /
