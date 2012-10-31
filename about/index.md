@@ -11,7 +11,7 @@ layout: page
 - Email: <jiao.kai@me.com>
 - WebPage: <http://jiaokai.laiwu.net>
 - QQ: 76765754
-- follow: [@木节泥城](http://weibo.com/lwjiaokai)
+- Follow: [@木节泥城](http://weibo.com/lwjiaokai)
 
 
 # 个人兴趣
