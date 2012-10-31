@@ -1,24 +1,29 @@
 ---
 title: About me
 layout: page
-comments: yes
 ---
 
 # 我是谁
 
-一个在天朝某小城市蜗居的极浅度码农，理想主义者、完美主义者、虚无主义者、崇洋媚外者。
+一个在天朝某小城市蜗居的浅度码农，理想主义者、完美主义者、虚无主义者、极简主义者、崇洋媚外者。
 。。。。。。
+
+- Email: <jiao.kai@me.com>
+- WebPage: <http://jiaokai.laiwu.net>
+- QQ: 76765754
+- follow: [@木节泥城](http://weibo.com/lwjiaokai)
+
 
 # 个人兴趣
 
 1. 美国电影和美国电视剧；
-2. 美国政治；
-3. 用脑子的东西；
-4. 老婆；
+2. 心理学、社会学、政治；
+3. 计算机编程；
+4. 用脑子的东西；
+5. 一些不用脑子的东西。
 
 # 本站架构
 
-本站目前采用 [Jekyll](https://github.com/mojombo/jekyll) 作为后台系统，Jekyll，一个以纯文本文件形式写博客的系统。
+本站目前采用 [Jekyll](https://github.com/mojombo/jekyll) 和 [github](https://github.com/jiaokai/) 作为后台系统。
 
-博客模板是从 [YiHui](http://yihui.name/) 那里直接偷过来的，他是从 [Linghua Zhang](http://lhzhang.com/) 那里偷的，都很无耻。作为一个非著名、没深度的土著，相信他是不会发现的。嘿嘿......
-
+模板修改自 [YiHui](http://yihui.name/)。

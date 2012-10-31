@@ -1,11 +1,12 @@
 ---
 layout: page
-title: 简历（焦凯）
+title: 简历
 ---
 
 # 联系方式
 
-Email：jiao.kai@qq.com；主页：<http://jiaokai.laiwu.net/>
+- Email：jiao.kai@qq.com
+- 主页：<http://jiaokai.laiwu.net/>
 
 # 教育背景
 
