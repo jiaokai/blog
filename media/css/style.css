@@ -21,8 +21,8 @@ li{padding:.2em 0;}
 ol,ul{list-style-position:inside;}
 ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
 li a { color: #3399CC; }
-p a { color: #DD0000; font-weight: 600; }
-strong { color: #000000; font-weight:600; }
+p a { color: #3399CC; }
+strong { color: #DD0000; font-weight:600; }
 pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;overflow:auto;border:1px solid #ddd;}
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
