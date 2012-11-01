@@ -20,7 +20,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 1. 以sudo运行上条命令
 
 {% highlight bash %}
-	$ sudo !!
+$ sudo !!
 {% endhighlight %}
 
 大家应该都知sudo，不解释。但通常出现的情况是，敲完命令执行后报错才发现忘了sudo。这时候，新手用户就会：按上箭头，按左箭头，盯着光标回到开始处，输入sudo，回车；高手用户就蛋定多了，按Ctrl-p，按Ctrl-a，输入sudo，回车。
@@ -36,7 +36,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 2. 以HTTP的方式共享当前文件夹的文件
 
 {% highlight bash %}
-	$ python -m SimpleHTTPServer
+$ python -m SimpleHTTPServer
 {% endhighlight %}
 
 这命令启动了Python的SimpleHTTPServer模块，考虑到Python在绝大多数的Linux发行版当中都默认安装，所以这个命令很可能是最简单的跨平台传文件的方法。
@@ -46,7 +46,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 3. 在以普通用户打开的vim当中保存一个root用户文件
 
 {% highlight bash %}
-	:w !sudo tee %
+:w !sudo tee %
 {% endhighlight %}
 
 这题目读起来纠结，其实是很常见的，常常忘记了sudo就直接用vim编辑/etc内的文件，（不过也不一定，vim发现保存的文件无法保存时候会提示）等编辑好了，保存时候才发现没权限。曲线方法是先保存个临时文件，退出后再sudo cp回去。不过实际上在vim里面可以直接完成这个过程的，命令就是如此。
@@ -62,7 +62,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 4. 切换回上一个目录
 
 {% highlight bash %}
-	$ cd -
+$ cd -
 {% endhighlight %}
 
 应该不少人都知道这个，横杆-代表上一个目录的路径。
@@ -74,7 +74,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 5. 替换上一条命令中的一个短语
 
 {% highlight bash %}
-	$ ^foo^bar^
+$ ^foo^bar^
 {% endhighlight %}
 
 又是另外一个**事件引用符（event designator）**，可以把上一条命令当中的foo替换成bar。
@@ -84,7 +84,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 这道命令的原始样式应该是这样的:
 
 {% highlight bash %}
-	$ !!:s/foo/bar/
+$ !!:s/foo/bar/
 {% endhighlight %}
 
 本文一开始介绍过!!，后面的一段大家应该很熟悉，vim、sed的替换操作都是这样的语法。
@@ -94,7 +94,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 6. 快速备份一个文件
 
 {% highlight bash %}
-	$ cp filename{,.bak}
+$ cp filename{,.bak}
 {% endhighlight %}
 
 这道命令把filename文件拷贝成filename.bak，大家应该在一些比较复杂的安装教程里面见过这样的用法。其原理就在于bash对大括号的展开操作，filename{,.bak}这一段会被展开成filename filename.bak再传给cp，于是就有了备份的命令了。
@@ -102,15 +102,15 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 大括号在bash里面是一个排列的意义，可以试试这个：
 
 {% highlight bash %}
-	$ echo {a,b,c}{a,b,c}{a,b,c}
+$ echo {a,b,c}{a,b,c}{a,b,c}
 {% endhighlight %}
 
 将输出三个集合的全排列:
 
 {% highlight bash %}
-	aaa aab aac aba abb abc aca acb acc
-	baa bab bac bba bbb bbc bca bcb bcc
-	caa cab cac cba cbb cbc cca ccb ccc
+aaa aab aac aba abb abc aca acb acc
+baa bab bac bba bbb bbc bca bcb bcc
+caa cab cac cba cbb cbc cca ccb ccc
 {% endhighlight %}
 
 关于shell当中的集合操作，可深入阅读“[Set Operations in the Unix Shell](http://www.catonmat.net/blog/set-operations-in-unix-shell/)”。
@@ -118,7 +118,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 7. 免密码ssh登录主机
 
 {% highlight bash %}
-	$ ssh-copy-id remote-machine
+$ ssh-copy-id remote-machine
 {% endhighlight %}
 
 这个命令把当前用户的公钥串写入到远程主机的~/.ssh/authorized_keys内，这样下次使用ssh登录的时候，远程主机就直接根据这串密钥完成身份校验，不再询问密码了。前提是你当前用户有生成了公钥，默认是没有的，先执行ssh-keygen试试吧！
@@ -126,9 +126,9 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 这个命令如果用手工完成，是这样的：
 
 {% highlight bash %}
-	your-machine$ scp ~/.ssh/identity.pub remote-machine:
-	your-machine$ ssh remote-machine
-	remote-machine$ cat identity.pub >> ~/.ssh/authorized_keys
+your-machine$ scp ~/.ssh/identity.pub remote-machine:
+your-machine$ ssh remote-machine
+remote-machine$ cat identity.pub >> ~/.ssh/authorized_keys
 {% endhighlight %}
 
 如果你想删掉远程主机上的密钥，直接打开authorized_keys，搜索你的用户名，删除那行，即可。
@@ -136,7 +136,7 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 ## 8. 抓取Linux桌面的视频
 
 {% highlight bash %}
-	$ ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg
+$ ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg
 {% endhighlight %}
 
 我们在一些视频网站上看到别人的3D桌面怎么怎么酷的视频，通常就是这么来的，ffmpeg可以直接解码X11的图形，并转换到相应输出格式。
@@ -158,7 +158,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 9. 用你最喜欢的编辑器来编辑命令
 
 {% highlight bash %}
-	command <C-x C-e>
+command <C-x C-e>
 {% endhighlight %}
 
 在已经敲完的命令后按<CTRL-x CTRL-e>，会打开一个你指定的编辑器（比如vim，通过环境变量$EDITOR指定），里面就是你刚输入的命令，然后爱怎么编辑就怎么编辑吧，特别是那些参数异常复杂的程序，比如mencoder/ffmpeg，一个命令动辄3、4行的，要修改其中的参数，这个方法最合适不过了，保存退出后自动执行这个程序。
@@ -172,7 +172,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 10. 清空或创建一个文件
 
 {% highlight bash %}
-	> file.txt
+> file.txt
 {% endhighlight %}
 
 **">"** 在shell里面是标准输出重定向符，即把（前部个命令的）命令行输出转往一个文件内，但这里没有“前部命令”，输出为空，于是就覆盖（或创建）成一个空文件了。
@@ -184,7 +184,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 11. 用ssh创建端口转发通道
 
 {% highlight bash %}
-	ssh -N -L2001:remotehost:80 user@somemachine
+ssh -N -L2001:remotehost:80 user@somemachine
 {% endhighlight %}
 
 这个命令在本机打开了2001端口，对本机2001端口的请求通过somemachine作为跳板，转到remotehost的80端口上。
@@ -196,8 +196,8 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 举一个具体例子，运行：
 
 {% highlight bash %}
-	ssh -f -N -L 0.0.0.0:443:twitter.com:443 shell.cjb.net
-	ssh -f -N -L 0.0.0.0:80:twitter.com:80 shell.cjb.net
+ssh -f -N -L 0.0.0.0:443:twitter.com:443 shell.cjb.net
+ssh -f -N -L 0.0.0.0:80:twitter.com:80 shell.cjb.net
 {% endhighlight %}
 
 然后在/etc/hosts里面添加127.0.0.1 twitter.com，好吧剩下的你懂的。
@@ -207,7 +207,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 12. 重置终端
 
 {% highlight bash %}
-	reset
+reset
 {% endhighlight %}
 
 如果你试过不小心cat了某个二进制文件，很可能整个终端就傻掉了，可能不会换行，没法回显，大堆乱码之类的，这时候敲入reset回车，不管命令有没有显示，就能回复正常了。
@@ -215,7 +215,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 实际上reset命令只是输出了一些特殊字符，我们看BusyBox里面最简单的reset程序的实现：
 
 {% highlight bash %}
-	printf("\033c\033(K\033[J\033[0m\033[?25h");
+printf("\033c\033(K\033[J\033[0m\033[?25h");
 {% endhighlight %}
 
 输出的这些字符对Shell是有特殊意义的：
@@ -231,7 +231,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 13. 在午夜的时候执行某命令
 
 {% highlight bash %}
-	echo cmd | at midnight
+echo cmd | at midnight
 {% endhighlight %}
 
 说的就是 **at** 这个组件，通常跟 **cron** 相提并论，不过 at 主要用于定时一次性任务，而 cron 定时周期性任务。
@@ -241,7 +241,7 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 ## 14. 远程传送麦克风语音
 
 {% highlight bash %}
-	dd if=/dev/dsp | ssh username@host dd of=/dev/dsp
+dd if=/dev/dsp | ssh username@host dd of=/dev/dsp
 {% endhighlight %}
 
 没错就是实现一个喊话器的功能。
@@ -253,7 +253,7 @@ dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使�
 如果你没有远程主机，可以试试这样：
 
 {% highlight bash %}
-	dd if=/dev/dsp of=/dev/dsp
+dd if=/dev/dsp of=/dev/dsp
 {% endhighlight %}
 
 直接回放麦克风的声音，只是有一点延时。
@@ -261,25 +261,25 @@ dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使�
 但是如果有别的程序正在使用声卡，这个方法就不凑效了，因为一般的声卡都不允许多个音频流同时处理，可以借用alsa组件的工具，arecord跟aplay:
 
 {% highlight bash %}
-	arecord | ssh username@host aplay
+arecord | ssh username@host aplay
 {% endhighlight %}
 
 本地回放就是：
 
 {% highlight bash %}
-	arecord | aplay
+arecord | aplay
 {% endhighlight %}
 
 如果你想吓吓别人：
 
 {% highlight bash %}
-	cat /dev/urandom | ssh username@host aplay
+cat /dev/urandom | ssh username@host aplay
 {% endhighlight %}
 
 ## 15. 映射一个内存目录
 
 {% highlight bash %}
-	$ mount -t tmpfs -o size=1024m tmpfs /mnt/ram
+$ mount -t tmpfs -o size=1024m tmpfs /mnt/ram
 {% endhighlight %}
 
 这个命令开了一块1G内存来当目录用。不过放心，如果里面没文件，是不会占用内存的，用多少占多少。
@@ -293,7 +293,7 @@ dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使�
 ## 16. 用diff对比远程文件跟本地文件
 
 {% highlight bash %}
-	$ ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
+$ ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
 {% endhighlight %}
 
 diff通常的用法是从参数读入两个文件，而命令里面的-则是指从stdin读入了。
@@ -303,7 +303,7 @@ diff通常的用法是从参数读入两个文件，而命令里面的-则是指
 ## 17. 查看系统中占用端口的进程
 
 {% highlight bash %}
-	$ netstat -tulnp
+$ netstat -tulnp
 {% endhighlight %}
 
 Netstat是很常用的用来查看Linux网络系统的工具之一，这个参数可以背下来：
@@ -319,72 +319,72 @@ Netstat是很常用的用来查看Linux网络系统的工具之一，这个参�
 ## 18. 更友好的显示当前挂载的文件系统
 
 {% highlight bash %}
-	$ mount | column -t
+$ mount | column -t
 {% endhighlight %}
 
 这条命令适用于任何文件系统，column 用于把输出结果进行列表格式化操作，这里最主要的目的是让大家熟悉一下 column -t 的用法。 下面是单单使用 mount 命令的结果： 
 
 {% highlight bash %}
-	$ mount
- 
-	/dev/root on / type ext3 (rw)
-	/proc on /proc type proc (rw)
-	/dev/mapper/lvmraid-home on /home type ext3 (rw,noatime)
+$ mount
+
+/dev/root on / type ext3 (rw)
+/proc on /proc type proc (rw)
+/dev/mapper/lvmraid-home on /home type ext3 (rw,noatime)
 {% endhighlight %}
 
 而加了 column -t 命令后就成为这样了： 
 
 {% highlight bash %}
-	$ mount | column -t
+$ mount | column -t
  
-	/dev/root on / type ext3 (rw)
-	/proc on /proc type proc (rw)
-	/dev/mapper/lvmraid-home on /home type ext3 (rw,noatime)
+/dev/root on / type ext3 (rw)
+/proc on /proc type proc (rw)
+/dev/mapper/lvmraid-home on /home type ext3 (rw,noatime)
 {% endhighlight %}
 
 另外你可加上列名称来改善输出结果：
 
 {% highlight bash %}
-	$ (echo "DEVICE - PATH - TYPE FLAGS" && mount) | column -t
+$ (echo "DEVICE - PATH - TYPE FLAGS" && mount) | column -t
  
-	DEVICE                    -   PATH   -     TYPE   FLAGS
-	/dev/root                 on  /      type  ext3   (rw)
-	/proc                     on  /proc  type  proc   (rw)
-	/dev/mapper/lvmraid-home  on  /home  type  ext3   (rw,noatime)
+DEVICE                    -   PATH   -     TYPE   FLAGS
+/dev/root                 on  /      type  ext3   (rw)
+/proc                     on  /proc  type  proc   (rw)
+/dev/mapper/lvmraid-home  on  /home  type  ext3   (rw,noatime)
 {% endhighlight %}
 
 列2和列4并不是很友好，我们可以用 awk 来再处理一下：
 
 {% highlight bash %}
-	$ (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
+$ (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
  
-	DEVICE                    PATH   TYPE   FLAGS
-	/dev/root                 /      ext3   (rw)
-	/proc                     /proc  proc   (rw)
-	/dev/mapper/lvmraid-home  /home  ext3   (rw,noatime)
+DEVICE                    PATH   TYPE   FLAGS
+/dev/root                 /      ext3   (rw)
+/proc                     /proc  proc   (rw)
+/dev/mapper/lvmraid-home  /home  ext3   (rw,noatime)
 {% endhighlight %}
 
 最后我们可以设置一个别名，为 nicemount ：
 
 {% highlight bash %}
-	$ nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t; }
+$ nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t; }
 {% endhighlight %}
 
 试一下：
 
 {% highlight bash %}
-	$ nicemount
+$ nicemount
  
-	DEVICE                    PATH   TYPE   FLAGS
-	/dev/root                 /      ext3   (rw)
-	/proc                     /proc  proc   (rw)
-	/dev/mapper/lvmraid-home  /home  ext3   (rw,noatime)
+DEVICE                    PATH   TYPE   FLAGS
+/dev/root                 /      ext3   (rw)
+/proc                     /proc  proc   (rw)
+/dev/mapper/lvmraid-home  /home  ext3   (rw,noatime)
 {% endhighlight %}
 
 ## 19. 运行前一个 Shell 命令，同时用 “bar” 替换掉命令行中的每一个 “foo”
 
 {% highlight bash %}
-	$ !!:gs/foo/bar
+$ !!:gs/foo/bar
 {% endhighlight %}
 
 !! 表示重复执行上一条命令，并用 :gs/foo/bar 进行替换操作。 关于 !! 这个用法在第一条中已有介绍。
@@ -392,7 +392,7 @@ Netstat是很常用的用来查看Linux网络系统的工具之一，这个参�
 ## 20. 实时某个目录下查看最新改动过的文件
 
 {% highlight bash %}
-	$ watch -d -n 1 'df; ls -FlAt /path'
+$ watch -d -n 1 'df; ls -FlAt /path'
 {% endhighlight %}
 
 watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参数表示刷新间隔为 1 秒。 df; ls -FlAt /path 运行了两条命令，df 是输出磁盘使用情况，ls -FlAt 则列出 /path 下面的所有文件。 ls -FlAt 的参数详解：
@@ -405,7 +405,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 21. 通过 SSH 挂载远程主机上的文件夹
 
 {% highlight bash %}
-	$ sshfs name@server:/path/to/folder /path/to/mount/point
+$ sshfs name@server:/path/to/folder /path/to/mount/point
 {% endhighlight %}
 
 这条命令可以让你通过 SSH 加载远程主机上的文件系统为本地磁盘，前提是你需要安装 FUSE 及 sshfs 这两个软件。
@@ -415,40 +415,40 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 卸载的话使用 fusermount 或 umount 命令： 
 
 {% highlight bash %}
-	$ fusermount -u /path/to/mount/point
-	or
-	$ umount /path/to/mount/point
+$ fusermount -u /path/to/mount/point
+or
+$ umount /path/to/mount/point
 {% endhighlight %}
 
 ## 22. 通过 DNS 来读取 Wikipedia 的词条
 
 {% highlight bash %}
-	$ dig +short txt .wp.dg.cx
+$ dig +short txt .wp.dg.cx
 {% endhighlight %}
 
 这也许是最有趣的一条技巧了，David Leadbeater 创建了一个 [DNS 服务器](https://dgl.cx/wikipedia-dns)，通过它当你查询一个 TXT 记录类型时，会返回一条来自于 Wikipedia 的简短的词条文字，这是 [他的介绍](https://dgl.cx/2008/11/wpdns-pres/) 。 这里有一个样例，来查询 “hacker” 的含义： 
 
 {% highlight bash %}
-	$ dig +short txt hacker.wp.dg.cx
+$ dig +short txt hacker.wp.dg.cx
  
-	"Hacker may refer to: Hacker (computer security), someone involved
-	in computer security/insecurity, Hacker (programmer ……"
+"Hacker may refer to: Hacker (computer security), someone involved
+in computer security/insecurity, Hacker (programmer ……"
 {% endhighlight %}
 
 这里使用了 dig 命令，这是标准的用来查询 DNS 的系统管理工具，+short 参数是让其仅仅返回文字响应，txt 则是指定查询 TXT 记录类型。 更简单的做法是你可以为这个技巧创建一个函数： 
 
 {% highlight bash %}
-	wiki() { dig +short txt $1.wp.dg.cx; }
-	# 然后试试吧：
-	wiki hacker
+wiki() { dig +short txt $1.wp.dg.cx; }
+# 然后试试吧：
+wiki hacker
  
-	"Hacker may refer to: Hacker (computer security), …"
+"Hacker may refer to: Hacker (computer security), …"
 {% endhighlight %}
 
 如果你不想用 dig ，也可以用 host 命令： 
 
 {% highlight bash %}
-	$ host -t txt hacker.wp.dg.cx
+$ host -t txt hacker.wp.dg.cx
 {% endhighlight %}
 
 另外在Twitter上看过某人的创意，用普通的dns来作为程序版本更新的查询服务器：设定域名software-version-check.example.com的A记录为1.2.40.3，对比自己的版本号，嗯，有更新了！ 
@@ -456,7 +456,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 23. 用 Wget 的递归方式下载整个网站
 
 {% highlight bash %}
-	$ wget --random-wait -r -p -e robots=off -U Mozilla www.example.com
+$ wget --random-wait -r -p -e robots=off -U Mozilla www.example.com
 {% endhighlight %}
 
 参数解释： –random-wait 等待 0.5 到 1.5 秒的时间来进行下一次请求 -r 开启递归检索 -e robots=off 忽略 robots.txt -U Mozilla 设置 User-Agent 头为 Mozilla 其它一些有用的参数：
@@ -469,47 +469,47 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 24. 复制最后使用的命令中的参数
 
 {% highlight bash %}
-	<Ctrl + .> or <ESC + . >
+<Ctrl + .> or <ESC + . >
 {% endhighlight %}
 
 这个快捷键只能工作于 shell 的 emacs 编辑模式，它可以从最后使用的命令行中复制参数到当前命令行中，下面是一个样例： 
 
 {% highlight bash %}
-	$ echo a b c
-	a b c
+$ echo a b c
+a b c
  
-	$ echo
-	$ echo c
+$ echo
+$ echo c
 {% endhighlight %}
 
 你可以重复执行该快捷键，以便获取自已需要的参数， 以下是样例： 
 
 {% highlight bash %}
-	$ echo 1 2 3
-	1 2 3
-	$ echo a b c
-	a b c
+$ echo 1 2 3
+1 2 3
+$ echo a b c
+a b c
  
-	$ echo
-	$ echo c
+$ echo
+$ echo c
  
-	$ echo  again
-	$ echo 3
+$ echo  again
+$ echo 3
 {% endhighlight %}
 
 另外，假如你想指定第1个或第2个，或者是第 n 个参数的话，可以按 ALT + 1 (或 ESC + 1) 或 ALT + 2 (或 ESC +2) 这样形式的快捷键。 以下是样例：
 
 {% highlight bash %}
-	$ echo a b c
-	a b c
+$ echo a b c
+a b c
  
-	$ echo
-	$ echo a
-	a
+$ echo
+$ echo a
+a
  
-	$ echo
-	$ echo b
-	b
+$ echo
+$ echo b
+b
 {% endhighlight %}
 
 查看 [Emacs Editing Mode Keyboard Shortcuts](http://www.catonmat.net/blog/bash-emacs-editing-mode-cheat-sheet/) 一文获取更多类似的快捷键。 
@@ -517,7 +517,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 25. 执行一条命令但不保存到 history 中
 
 {% highlight bash %}
-	$  command
+$  command
 {% endhighlight %}
 
 这条命令可运行于最新的 Bash shell 里，在其它 shell 中没测试过。
@@ -529,7 +529,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 26. 显示当前目录中所有子目录的大小
 
 {% highlight bash %}
-	$ du -h --max-depth=1
+$ du -h --max-depth=1
 {% endhighlight %}
 
 –max-depth=1 参数可以让 du 命令显示当前目录下 1 级子目录的统计信息，当然你也可以把 1 改为 2 ，进一步显示 2 级子目录的统计信息，可以灵活运用。而 -h 参数则是以 Mb 、G 这样的单位来显示大小。 译者注：在此推荐一个小工具 ncdu ，可以更方便的达到此效果。
@@ -537,7 +537,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 27. 显示消耗内存最多的 10 个运行中的进程，以内存使用量排序
 
 {% highlight bash %}
-	$ ps aux | sort -nk +4 | tail
+$ ps aux | sort -nk +4 | tail
 {% endhighlight %}
 
 显然这并不是最好的方法，但它确实用起还不错。这是一个典型的管道应用，通过 ps aux 来输出到 sort 命令，并用 sort 排序列出 4 栏，再进一步转到 tail 命令，最终输出 10 行显示使用内存最多的进程情况。 假如想要发现哪个进程使用了大量内存的话，我通常会使用 htop 或 top 而非 ps 。 
@@ -545,7 +545,7 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 ## 28. 用 python 快速开启一个 SMTP 服务
 
 {% highlight bash %}
-	$ python -m smtpd -n -c DebuggingServer localhost:1025
+$ python -m smtpd -n -c DebuggingServer localhost:1025
 {% endhighlight %}
 
 这是一个用 Python 标准库 smtpd （用 -m smtpd 指定) 实现在简易 SMTP 服务，运行于 1025 端口。
@@ -558,13 +558,13 @@ watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参
 另外，假如你想让程序运行于标准的 25 的端口上的话，你必须使用 sudo 命令，因为只有 root 才能在 1-1024 端口上开启服务。如下： 
 
 {% highlight bash %}
-	$ sudo python -m smtpd -n -c DebuggingServer localhost:25
+$ sudo python -m smtpd -n -c DebuggingServer localhost:25
 {% endhighlight %}
 
 ## 29. 查看 ASCII 码表
 
 {% highlight bash %}
-	$ man 7 ascii
+$ man 7 ascii
 {% endhighlight %}
 
 很多人初学编程都会接触到ascii码的概念，有时候为了查某个符号的ascii值，可能还得翻箱倒柜找出当年的课本？[Linux Manpage](http://www.kernel.org/doc/man-pages/) 里面其实包含了很多类似的实用资料，上述命令就能很详细的方式解释ascii编码，当然 [这里](http://www.kernel.org/doc/man-pages/online/pages/man7/ascii.7.html) 还有在线版。
@@ -603,7 +603,7 @@ manpages里面还有一些有趣而且实用的资料，可能鲜为人知：
 ## 30. 简易计时器
 
 {% highlight bash %}
-	$ time read
+$ time read
 {% endhighlight %}
 
 运行命令开始算起，到结束时按一下Enter，就显示出整个过程的时间，精确到ms级别。
@@ -611,11 +611,11 @@ manpages里面还有一些有趣而且实用的资料，可能鲜为人知：
 time是用来计算一个进程在运行到结束过程耗费多少时间的程序，它的输出通常有三项：
 
 {% highlight bash %}
-	$ time ls /opt
-	...
-	real    0m0.008s
-	user    0m0.003s
-	sys     0m0.007s
+$ time ls /opt
+...
+real    0m0.008s
+user    0m0.003s
+sys     0m0.007s
 {% endhighlight %}
 
 * real - 指整个程序对真实世界而言运行所需时间；
@@ -629,7 +629,7 @@ time是用来计算一个进程在运行到结束过程耗费多少时间的程�
 ## 31. 远程关掉一台Windows机器
 
 {% highlight bash %}
-	$ net rpc shutdown -I IP_ADDRESS -U username%password
+$ net rpc shutdown -I IP_ADDRESS -U username%password
 {% endhighlight %}
 
 Windows平台上的net命令是比较强大的，因为其后台是一个RPC类的系统服务，大家应该看过win下用net use \\ip\ipc$ *这样一个命令建立IPC空连接，入侵主机的事情。
@@ -641,7 +641,7 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 ## 32. 在一个子shell中运行一个命令
 
 {% highlight bash %}
-	(cd /tmp && ls)
+(cd /tmp && ls)
 {% endhighlight %}
 
 当然这只是演示，要查看目录当然可以ls /tmp。
@@ -651,13 +651,13 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 在Shell编程中还有很多使用上引号来括住一个命令：`ls /tmp`，这也是子shell过程。可是上引号的方法无法嵌套，而使用小括号的方法可以，一个比较纠结的例子是：
 
 {% highlight bash %}
-	$ echo $(echo -e \\x$(printf "%x" 65))
+$ echo $(echo -e \\x$(printf "%x" 65))
 {% endhighlight %}
 
 ## 33. 利用中间管道嵌套使用SSH
 
 {% highlight bash %}
-	$ ssh -t host_A ssh host_B
+$ ssh -t host_A ssh host_B
 {% endhighlight %}
 
 如果目标机器host_B处于比较复杂的网络环境，本机无法直接访问，但另外一台host_A能够访问到host_B，而且也能被本机访问到，那上述命令就解决了方便登录host_B的问题。
@@ -665,13 +665,13 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 但理论上这个过程是可以无限嵌套的，比如：
 
 {% highlight bash %}
-	ssh -t host1 ssh -t host2 ssh -t host3 ssh -t host4 ...
+ssh -t host1 ssh -t host2 ssh -t host3 ssh -t host4 ...
 {% endhighlight %}
 
 ## 34. 清空屏幕
 
 {% highlight bash %}
-	<CTRL+l>;
+<CTRL+l>;
 {% endhighlight %}
 
 这个跟之前介绍的reset命令重置终端的作用有些类似，其实都只是发送一段控制序列，让终端的显示复位。
@@ -679,7 +679,7 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 还可以这样运行：
 
 {% highlight bash %}
-	$ tput clear
+$ tput clear
 {% endhighlight %}
 
 **tput** 是专门用来控制终端的一个小工具，也挺强大的，详细信息运行man tput查看。
@@ -687,7 +687,7 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 ## 35. 我想知道一台服务器什么时候重启完
 
 {% highlight bash %}
-	$ ping -a IP
+$ ping -a IP
 {% endhighlight %}
 
 系统管理员最常做的事情是重启系统。但是服务器的重启过程往往得花上好几分钟，什么你的服务器4个scsi卡？16个硬盘？系统是Redhat？还完全安装所有组件？好吧，它重启的时间都够你吃顿饭了，所以我很想知道它什么时候回来。
@@ -697,7 +697,7 @@ ping命令有个audible ping参数，-a，当它终于ping通你的服务器时�
 ## 36. 列出你最常用的10条命令
 
 {% highlight bash %}
-	$ history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+$ history | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
 {% endhighlight %}
 
 这行命令组合得很妙：
@@ -707,11 +707,11 @@ history输出用户了命令历史；awk统计并输出列表；sort排序；hea
 ## 37. 检查Gmail新邮件
 
 {% highlight bash %}
-	curl -u you@gmail.com --silent "https://mail.google.com/mail/feed/atom" | perl -ne \ 
-	'
+curl -u you@gmail.com --silent "https://mail.google.com/mail/feed/atom" | perl -ne \ 
+'
     print "Subject: $1 " if /<title>(.+?)<\/title>/ && $title++;
     print "(from $1)\n" if /<email>(.+?)<\/email>/;
-	'
+'
 {% endhighlight %}
 
 Gmail的一个特色是支持Atom feed输出邮件列表，所以总是见到很多Gmail邮件提醒器之类的，因为开发特简单，atom很方便。
@@ -721,7 +721,7 @@ Gmail的一个特色是支持Atom feed输出邮件列表，所以总是见到很
 ## 38. 用Telnet看《星球大战》
 
 {% highlight bash %}
-	$ telnet towel.blinkenlights.nl
+$ telnet towel.blinkenlights.nl
 {% endhighlight %}
 
 没什么好解释的，就是ASCII艺术之一。如果你有ipv6连接，还能看到彩色版的。牛吧？
