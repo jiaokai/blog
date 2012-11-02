@@ -17,8 +17,7 @@ a{color:#dd0000;text-decoration:none;}
 a:hover{color:#333333;text-decoration:underline;}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
 p{padding:.3em 0;}
-li{padding:.2em 0;}
-ol,ul{list-style-position:inside;}
+ol,ul{list-style-position:inside; margin-left:1em;margin-bottom:1em;}
 ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
 li a { color: #3399CC; }
 p a { color: #3399CC; }
@@ -27,7 +26,7 @@ pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;overflow
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
-#container{width:600px;margin:2em auto;display:block;padding:0 2em;}
+#container{width:700px;margin:2em auto;display:block;padding:0 2em;}
 .content{font-size:1.1em;line-height:1.4em;}
 .content h1{padding:.5em 0;}
 .content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}
@@ -44,11 +43,11 @@ nav a{display:block;padding:.7em 1em;color:#000000;}
 nav a:hover{background-color:#ff0000;text-decoration:none;color:#f9f9f9;-webkit-transition:color .2s linear;}
 .post{padding:.5em 0em 1em 0em;}
 h1{padding:.5em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.6em;color:#000;}
-h2{padding:.5em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
-h3{padding:.3em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
+h2{padding:.6em 0 .4em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
+h3{padding:.5em 0 .3em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
 h4{padding:.3em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1em;color:#333;}
 pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:12px;}
 code{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background-color:#F7F7F7;border:1px solid #ddd; vertical-align:text-bottom;}
-p code { color: #3399cc; background: #c0c8d2; background: rgba(0,0,0,0.1); padding: 1px 3px; font-size: 10px; line-height: 1.1; font-weight: 600; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; display: inline-block; position: relative; top: -1px; }
+p code {background-color: #fee9cc; color: rgba(0, 0, 0, 0.75); padding: 1px 3px; font-size: 12px; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}

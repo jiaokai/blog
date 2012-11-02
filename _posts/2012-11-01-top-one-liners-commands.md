@@ -23,13 +23,13 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 $ sudo !!
 {% endhighlight %}
 
-大家应该都知sudo，不解释。但通常出现的情况是，敲完命令执行后报错才发现忘了sudo。这时候，新手用户就会：按上箭头，按左箭头，盯着光标回到开始处，输入sudo，回车；高手用户就蛋定多了，按Ctrl-p，按Ctrl-a，输入sudo，回车。
+大家应该都知`sudo`，不解释。但通常出现的情况是，敲完命令执行后报错才发现忘了`sudo`。这时候，新手用户就会：按上箭头，按左箭头，盯着光标回到开始处，输入`sudo`，回车；高手用户就蛋定多了，按`Ctrl-p`，按`Ctrl-a`，输入`sudo`，回车。
 
-这里介绍这个是天外飞仙级别的，对，就直接sudo !!。
+这里介绍这个是天外飞仙级别的，对，就直接`sudo !!`。
 
 当然这几种解决方式效果是完全一样的，只是款不一样，嗯，不解释。
 
-两个感叹号其实是bash的一个特性，称为**事件引用符（event designators）**。!!其实相当于!-1，引用前一条命令，当然也可以!-2，!-50。默认情况下bash会在~/.bash_history文件内记录用户执行的最近500条命令，history命令可以显示这些命令。
+两个感叹号其实是bash的一个特性，称为**事件引用符（event designators）**。!!其实相当于`!-1`，引用前一条命令，当然也可以`!-2`，`!-50`。默认情况下bash会在`~/.bash_history`文件内记录用户执行的最近500条命令，history命令可以显示这些命令。
 
 关于事件引用符的更多用法可以深入阅读 [The Definitive Guide to Bash Command Line History](http://www.catonmat.net/blog/the-definitive-guide-to-bash-command-line-history/)。
 
@@ -45,17 +45,17 @@ $ python -m SimpleHTTPServer
 
 ## 3. 在以普通用户打开的vim当中保存一个root用户文件
 
-{% highlight bash %}
+{% highlight vim %}
 :w !sudo tee %
 {% endhighlight %}
 
-这题目读起来纠结，其实是很常见的，常常忘记了sudo就直接用vim编辑/etc内的文件，（不过也不一定，vim发现保存的文件无法保存时候会提示）等编辑好了，保存时候才发现没权限。曲线方法是先保存个临时文件，退出后再sudo cp回去。不过实际上在vim里面可以直接完成这个过程的，命令就是如此。
+这题目读起来纠结，其实是很常见的，常常忘记了sudo就直接用vim编辑`/etc`内的文件，（不过也不一定，vim发现保存的文件无法保存时候会提示）等编辑好了，保存时候才发现没权限。曲线方法是先保存个临时文件，退出后再`sudo cp`回去。不过实际上在vim里面可以直接完成这个过程的，命令就是如此。
 
-查阅vim的文档（输入:help :w），会提到命令:w!{cmd}，让vim执行一个外部命令{cmd}，然后把当前缓冲区的内容从stdin传入。
+查阅vim的文档（输入`:help :w`），会提到命令`:w!{cmd}`，让vim执行一个外部命令`{cmd}`，然后把当前缓冲区的内容从`stdin`传入。
 
 **tee** 是一个把stdin保存到文件的小工具。
 
-而%，是vim当中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。
+而`%`，是vim当中一个只读寄存器的名字，总保存着当前编辑文件的文件路径。
 
 所以执行这个命令，就相当于从vim外部修改了当前编辑的文件，好完工。
 
@@ -97,7 +97,7 @@ $ !!:s/foo/bar/
 $ cp filename{,.bak}
 {% endhighlight %}
 
-这道命令把filename文件拷贝成filename.bak，大家应该在一些比较复杂的安装教程里面见过这样的用法。其原理就在于bash对大括号的展开操作，filename{,.bak}这一段会被展开成filename filename.bak再传给cp，于是就有了备份的命令了。
+这道命令把filename文件拷贝成filename.bak，大家应该在一些比较复杂的安装教程里面见过这样的用法。其原理就在于bash对大括号的展开操作，`filename{,.bak}`这一段会被展开成`filename filename.bak`再传给cp，于是就有了备份的命令了。
 
 大括号在bash里面是一个排列的意义，可以试试这个：
 
@@ -121,7 +121,7 @@ caa cab cac cba cbb cbc cca ccb ccc
 $ ssh-copy-id remote-machine
 {% endhighlight %}
 
-这个命令把当前用户的公钥串写入到远程主机的~/.ssh/authorized_keys内，这样下次使用ssh登录的时候，远程主机就直接根据这串密钥完成身份校验，不再询问密码了。前提是你当前用户有生成了公钥，默认是没有的，先执行ssh-keygen试试吧！
+这个命令把当前用户的公钥串写入到远程主机的`~/.ssh/authorized_keys`内，这样下次使用ssh登录的时候，远程主机就直接根据这串密钥完成身份校验，不再询问密码了。前提是你当前用户有生成了公钥，默认是没有的，先执行ssh-keygen试试吧！
 
 这个命令如果用手工完成，是这样的：
 
@@ -143,16 +143,16 @@ $ ffmpeg -f x11grab -s wxga -r 25 -i :0.0 -sameq /tmp/out.mpg
 
 ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文件通常放最后，下面解析下几个参数：
 
-* -f x11grab 指定输入类型。因为x11的缓冲区不是普通的视频文件可以侦测格式，必须指定后ffmpeg才知道如何获得输入。
-* -s wxga 设置抓取区域的大小。wxga是1366*768的标准说法，也可以换成-s 800×600的写法。
-* -r 25 设置帧率，即每秒抓取的画面数。
-* -i :0.0 设置输入源，本地X默认在0.0
-* -sameq 保持跟输入流一样的图像质量，以用来后期处理。
+* `-f x11grab` 指定输入类型。因为x11的缓冲区不是普通的视频文件可以侦测格式，必须指定后ffmpeg才知道如何获得输入。
+* `-s wxga` 设置抓取区域的大小。wxga是1366*768的标准说法，也可以换成-s 800×600的写法。
+* `-r 25` 设置帧率，即每秒抓取的画面数。
+* `-i :0.0` 设置输入源，本地X默认在0.0
+* `-sameq` 保持跟输入流一样的图像质量，以用来后期处理。
 
 至于其他ffmpeg的用法，可以参考下面两篇文章：
 
-* How to Extract Audio Tracks from YouTube Videos
-* Converting YouTube Flash Videos to a Better Format with ffmpeg
+* [How to Extract Audio Tracks from YouTube Videos](http://www.catonmat.net/blog/how-to-extract-audio-tracks-from-youtube-videos/)
+* [Converting YouTube Flash Videos to a Better Format with ffmpeg](http://www.catonmat.net/blog/converting-youtube-flvs-to-a-better-format-with-ffmpeg)
 
 
 ## 9. 用你最喜欢的编辑器来编辑命令
@@ -161,13 +161,13 @@ ffmpeg的通常用法是，根据一堆参数，输出一个文件，输出文�
 command <C-x C-e>
 {% endhighlight %}
 
-在已经敲完的命令后按<CTRL-x CTRL-e>，会打开一个你指定的编辑器（比如vim，通过环境变量$EDITOR指定），里面就是你刚输入的命令，然后爱怎么编辑就怎么编辑吧，特别是那些参数异常复杂的程序，比如mencoder/ffmpeg，一个命令动辄3、4行的，要修改其中的参数，这个方法最合适不过了，保存退出后自动执行这个程序。
+在已经敲完的命令后按`<CTRL-x CTRL-e>`，会打开一个你指定的编辑器（比如vim，通过环境变量`$EDITOR`指定），里面就是你刚输入的命令，然后爱怎么编辑就怎么编辑吧，特别是那些参数异常复杂的程序，比如`mencoder/ffmpeg`，一个命令动辄3、4行的，要修改其中的参数，这个方法最合适不过了，保存退出后自动执行这个程序。
 
 实际上这是readline库的功能，在默认情况下，bash使用的是emacs模式的命令行操作方式，<CTRL-x CTRL-e>是调用这个功能的一个绑定。如果你习惯使用vi模式，按<ESC v>可以实现同样功能。
 
-如果你喜欢别的编辑器，可以在~/.bashrc里面放上比如export EDITOR=nano的命令。
+如果你喜欢别的编辑器，可以在`~/.bashrc`里面放上比如`export EDITOR=nano`的命令。
 
-另外一个修改命令的方法是使用fc命令（Fix Command），在编辑器里面打开上一句命令。上面提过一个^foo^bar^命令可以用fc来实现：fc -s foo=bar。
+另外一个修改命令的方法是使用fc命令（Fix Command），在编辑器里面打开上一句命令。上面提过一个`^foo^bar^`命令可以用fc来实现：`fc -s foo=bar`。
 
 ## 10. 清空或创建一个文件
 
@@ -177,9 +177,9 @@ command <C-x C-e>
 
 **">"** 在shell里面是标准输出重定向符，即把（前部个命令的）命令行输出转往一个文件内，但这里没有“前部命令”，输出为空，于是就覆盖（或创建）成一个空文件了。
 
-有些脚本的写法是:>file.txt，因为:是bash默认存在的空函数。
+有些脚本的写法是`:>file.txt`，因为`:`是bash默认存在的空函数。
 
-单纯创建文件也可以用$touch file.txt，**touch本来是用作修改文件的时间戳**，但如果文件不存在，就自动创建了。
+单纯创建文件也可以用`$touch file.txt`，**touch本来是用作修改文件的时间戳**，但如果文件不存在，就自动创建了。
 
 ## 11. 用ssh创建端口转发通道
 
@@ -210,11 +210,11 @@ ssh -f -N -L 0.0.0.0:80:twitter.com:80 shell.cjb.net
 reset
 {% endhighlight %}
 
-如果你试过不小心cat了某个二进制文件，很可能整个终端就傻掉了，可能不会换行，没法回显，大堆乱码之类的，这时候敲入reset回车，不管命令有没有显示，就能回复正常了。
+如果你试过不小心`cat`了某个二进制文件，很可能整个终端就傻掉了，可能不会换行，没法回显，大堆乱码之类的，这时候敲入`reset`回车，不管命令有没有显示，就能回复正常了。
 
-实际上reset命令只是输出了一些特殊字符，我们看BusyBox里面最简单的reset程序的实现：
+实际上`reset`命令只是输出了一些特殊字符，我们看BusyBox里面最简单的`reset`程序的实现：
 
-{% highlight bash %}
+{% highlight c %}
 printf("\033c\033(K\033[J\033[0m\033[?25h");
 {% endhighlight %}
 
@@ -236,7 +236,7 @@ echo cmd | at midnight
 
 说的就是 **at** 这个组件，通常跟 **cron** 相提并论，不过 at 主要用于定时一次性任务，而 cron 定时周期性任务。
 
-**at** 的参数比较人性化，跟英语语法一样，可以tomorrow, next week之类的，详细的查看手册man at。
+**at** 的参数比较人性化，跟英语语法一样，可以tomorrow, next week之类的，详细的查看手册`man at`。
 
 ## 14. 远程传送麦克风语音
 
@@ -246,9 +246,9 @@ dd if=/dev/dsp | ssh username@host dd of=/dev/dsp
 
 没错就是实现一个喊话器的功能。
 
-/dev/dsp是Linux下声卡的文件映射（Digital Signal Proccessor），从其中读数据就是录音，往里面写数据就是播放，相当简单！
+`/dev/dsp`是Linux下声卡的文件映射（Digital Signal Proccessor），从其中读数据就是录音，往里面写数据就是播放，相当简单！
 
-dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使用stdin/stdout来传输。
+dd是常用的数据拷贝程序，如果不同时指定if、of，就直接使用`stdin/stdout`来传输。
 
 如果你没有远程主机，可以试试这样：
 
@@ -284,7 +284,7 @@ $ mount -t tmpfs -o size=1024m tmpfs /mnt/ram
 
 这个命令开了一块1G内存来当目录用。不过放心，如果里面没文件，是不会占用内存的，用多少占多少。
 
-不过一般来说没必要手动挂载，因为多数发行版都会在fstab内预留了一个内存目录，挂载在/dev/shm，直接使用即可；
+不过一般来说没必要手动挂载，因为多数发行版都会在`fstab`内预留了一个内存目录，挂载在`/dev/shm`，直接使用即可；
 
 最常见的用途是用内存空间来放Firefox的配置，可以让慢吞吞的FF快很多，参见Shellex的博文：[用tmpfs让Firefox在内存中飞驰](http://shellex.info/speeding-up-firefox-with-tmpfs/)，以及后来的改进：[用tmpfs让Firefox在内存中飞驰II](http://shellex.info/speeding-up-firefox-with-tmpfs-ii/)，其中提到的脚本来自 [speeding up firefox with tmpfs and automatic rsync](http://www.linuxized.com/2009/05/speeding-up-firefox-with-tmpfs-and-automatic-rsync/) 。
 
@@ -296,7 +296,7 @@ $ mount -t tmpfs -o size=1024m tmpfs /mnt/ram
 $ ssh user@host cat /path/to/remotefile | diff /path/to/localfile -
 {% endhighlight %}
 
-diff通常的用法是从参数读入两个文件，而命令里面的-则是指从stdin读入了。
+diff通常的用法是从参数读入两个文件，而命令里面的`-`则是指从`stdin`读入了。
 
 善用ssh可以让web开发减少很多繁琐，还有比如 **sshfs**，可以从 **编辑-上传-编辑-上传** 的人工循环里面解脱出来。
 
@@ -322,7 +322,7 @@ Netstat是很常用的用来查看Linux网络系统的工具之一，这个参�
 $ mount | column -t
 {% endhighlight %}
 
-这条命令适用于任何文件系统，column 用于把输出结果进行列表格式化操作，这里最主要的目的是让大家熟悉一下 column -t 的用法。 下面是单单使用 mount 命令的结果： 
+这条命令适用于任何文件系统，`column` 用于把输出结果进行列表格式化操作，这里最主要的目的是让大家熟悉一下 `column -t` 的用法。 下面是单单使用 `mount` 命令的结果： 
 
 {% highlight bash %}
 $ mount
@@ -332,7 +332,7 @@ $ mount
 /dev/mapper/lvmraid-home on /home type ext3 (rw,noatime)
 {% endhighlight %}
 
-而加了 column -t 命令后就成为这样了： 
+而加了 `column -t` 命令后就成为这样了： 
 
 {% highlight bash %}
 $ mount | column -t
@@ -353,7 +353,7 @@ DEVICE                    -   PATH   -     TYPE   FLAGS
 /dev/mapper/lvmraid-home  on  /home  type  ext3   (rw,noatime)
 {% endhighlight %}
 
-列2和列4并不是很友好，我们可以用 awk 来再处理一下：
+列2和列4并不是很友好，我们可以用 `awk` 来再处理一下：
 
 {% highlight bash %}
 $ (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t
@@ -364,7 +364,7 @@ DEVICE                    PATH   TYPE   FLAGS
 /dev/mapper/lvmraid-home  /home  ext3   (rw,noatime)
 {% endhighlight %}
 
-最后我们可以设置一个别名，为 nicemount ：
+最后我们可以设置一个别名，为 `nicemount` ：
 
 {% highlight bash %}
 $ nicemount() { (echo "DEVICE PATH TYPE FLAGS" && mount | awk '$2=$4="";1') | column -t; }
@@ -387,7 +387,7 @@ DEVICE                    PATH   TYPE   FLAGS
 $ !!:gs/foo/bar
 {% endhighlight %}
 
-!! 表示重复执行上一条命令，并用 :gs/foo/bar 进行替换操作。 关于 !! 这个用法在第一条中已有介绍。
+!! 表示重复执行上一条命令，并用 `:gs/foo/bar` 进行替换操作。 关于 !! 这个用法在第一条中已有介绍。
 
 ## 20. 实时某个目录下查看最新改动过的文件
 
@@ -395,7 +395,7 @@ $ !!:gs/foo/bar
 $ watch -d -n 1 'df; ls -FlAt /path'
 {% endhighlight %}
 
-watch 是实时监控工具，-d 参数会高亮显示变化的区域，-n 1 参数表示刷新间隔为 1 秒。 df; ls -FlAt /path 运行了两条命令，df 是输出磁盘使用情况，ls -FlAt 则列出 /path 下面的所有文件。 ls -FlAt 的参数详解：
+watch 是实时监控工具，`-d` 参数会高亮显示变化的区域，`-n 1` 参数表示刷新间隔为 1 秒。 `df; ls -FlAt /path` 运行了两条命令，`df` 是输出磁盘使用情况，`ls -FlAt` 则列出 `/path` 下面的所有文件。 `ls -FlAt` 的参数详解：
 
 * -F 在文件后面加一个文件符号表示文件类型，共有 /=>@| 这几种类型， 表示可执行文件，/ 表示目录，= 表示接口( sockets) ，> 表示门， @ 表示符号链接， | 表示管道。
 * -l 以列表方式显示
@@ -412,7 +412,7 @@ $ sshfs name@server:/path/to/folder /path/to/mount/point
 
 **译者注**：关于 sshfs 实际上我之前写过一篇文章介绍过，详见 [在 Ubuntu 上使用 sshfs 映射远程 ssh 文件系统为本地磁盘](http://wowubuntu.com/sshfs.html) 。
 
-卸载的话使用 fusermount 或 umount 命令： 
+卸载的话使用 `fusermount` 或 `umount` 命令： 
 
 {% highlight bash %}
 $ fusermount -u /path/to/mount/point
@@ -435,7 +435,7 @@ $ dig +short txt hacker.wp.dg.cx
 in computer security/insecurity, Hacker (programmer ……"
 {% endhighlight %}
 
-这里使用了 dig 命令，这是标准的用来查询 DNS 的系统管理工具，+short 参数是让其仅仅返回文字响应，txt 则是指定查询 TXT 记录类型。 更简单的做法是你可以为这个技巧创建一个函数： 
+这里使用了 `dig` 命令，这是标准的用来查询 DNS 的系统管理工具，+short 参数是让其仅仅返回文字响应，txt 则是指定查询 TXT 记录类型。 更简单的做法是你可以为这个技巧创建一个函数： 
 
 {% highlight bash %}
 wiki() { dig +short txt $1.wp.dg.cx; }
@@ -459,7 +459,7 @@ $ host -t txt hacker.wp.dg.cx
 $ wget --random-wait -r -p -e robots=off -U Mozilla www.example.com
 {% endhighlight %}
 
-参数解释： –random-wait 等待 0.5 到 1.5 秒的时间来进行下一次请求 -r 开启递归检索 -e robots=off 忽略 robots.txt -U Mozilla 设置 User-Agent 头为 Mozilla 其它一些有用的参数：
+参数解释： `--random-wait` 等待 0.5 到 1.5 秒的时间来进行下一次请求 `-r` 开启递归检索 `-e robots=off` 忽略 robots.txt， `-U Mozilla` 设置 User-Agent 头为 Mozilla 其它一些有用的参数：
 
 * –limit-rate=20K 限制下载速度为 20K
 * -o logfile.txt 记录下载日志
@@ -524,7 +524,7 @@ $  command
 
 通过**在命令行前面添加一个空格**，就可以阻止这条命令被保存到 bash history (~/.bash_history) 文件中。
 
-这个行为可以通过 $HISTIGNORE shell 变量来控制。我的设置是 HISTIGNORE=”&:[ ]*” ，表示不保存重复的命令到 history 中，并且不保存以空格开头的命令行。$HISTIGNORE 中的值以冒号分隔。 如果你的命令内包含密码，比如mysqladmin，不把它记录在历史当中是好主义。 深入了解的话，可进一步看此文 [The Definitive Guide to Bash Command Line History](http://www.catonmat.net/blog/the-definitive-guide-to-bash-command-line-history/) 。
+这个行为可以通过 `$HISTIGNORE` shell 变量来控制。我的设置是 `HISTIGNORE=”&:[ ]*”` ，表示不保存重复的命令到 history 中，并且不保存以空格开头的命令行。`$HISTIGNORE` 中的值以冒号分隔。 如果你的命令内包含密码，比如mysqladmin，不把它记录在历史当中是好主义。 深入了解的话，可进一步看此文 [The Definitive Guide to Bash Command Line History](http://www.catonmat.net/blog/the-definitive-guide-to-bash-command-line-history/) 。
 
 ## 26. 显示当前目录中所有子目录的大小
 
@@ -532,7 +532,7 @@ $  command
 $ du -h --max-depth=1
 {% endhighlight %}
 
-–max-depth=1 参数可以让 du 命令显示当前目录下 1 级子目录的统计信息，当然你也可以把 1 改为 2 ，进一步显示 2 级子目录的统计信息，可以灵活运用。而 -h 参数则是以 Mb 、G 这样的单位来显示大小。 译者注：在此推荐一个小工具 ncdu ，可以更方便的达到此效果。
+`--max-depth=1` 参数可以让 `du` 命令显示当前目录下 1 级子目录的统计信息，当然你也可以把 1 改为 2 ，进一步显示 2 级子目录的统计信息，可以灵活运用。而 -h 参数则是以 Mb 、G 这样的单位来显示大小。 译者注：在此推荐一个小工具 `ncdu` ，可以更方便的达到此效果。
 
 ## 27. 显示消耗内存最多的 10 个运行中的进程，以内存使用量排序
 
@@ -540,7 +540,7 @@ $ du -h --max-depth=1
 $ ps aux | sort -nk +4 | tail
 {% endhighlight %}
 
-显然这并不是最好的方法，但它确实用起还不错。这是一个典型的管道应用，通过 ps aux 来输出到 sort 命令，并用 sort 排序列出 4 栏，再进一步转到 tail 命令，最终输出 10 行显示使用内存最多的进程情况。 假如想要发现哪个进程使用了大量内存的话，我通常会使用 htop 或 top 而非 ps 。 
+显然这并不是最好的方法，但它确实用起还不错。这是一个典型的管道应用，通过 `ps aux` 来输出到 `sort` 命令，并用 `sort` 排序列出 4 栏，再进一步转到 tail 命令，最终输出 10 行显示使用内存最多的进程情况。 假如想要发现哪个进程使用了大量内存的话，我通常会使用 `htop` 或 `top` 而非 ps 。 
 
 ## 28. 用 python 快速开启一个 SMTP 服务
 
@@ -555,7 +555,7 @@ $ python -m smtpd -n -c DebuggingServer localhost:1025
 * -n 参数让 Python 不要进行 setuid ( 改变用户）为 “nobody” ，也就是说直接用你的帐号来运行；
 * -c DebuggingServer 参数是让 Python 运行时在屏幕上输出调试及运行信息 * localhost:1025 参数则是让 Python 在本地的 1025 端口上开启 SMTP 服务。
  
-另外，假如你想让程序运行于标准的 25 的端口上的话，你必须使用 sudo 命令，因为只有 root 才能在 1-1024 端口上开启服务。如下： 
+另外，假如你想让程序运行于标准的 25 的端口上的话，你必须使用 `sudo` 命令，因为只有 root 才能在 1-1024 端口上开启服务。如下： 
 
 {% highlight bash %}
 $ sudo python -m smtpd -n -c DebuggingServer localhost:25
@@ -569,7 +569,7 @@ $ man 7 ascii
 
 很多人初学编程都会接触到ascii码的概念，有时候为了查某个符号的ascii值，可能还得翻箱倒柜找出当年的课本？[Linux Manpage](http://www.kernel.org/doc/man-pages/) 里面其实包含了很多类似的实用资料，上述命令就能很详细的方式解释ascii编码，当然 [这里](http://www.kernel.org/doc/man-pages/online/pages/man7/ascii.7.html) 还有在线版。
 
-man命令的第二个参数是**区域码**，用来区分索引词的范围，比如printf，在C标准库里面的printf跟bash当中的printf是不同的，前者的查询是man 3 printf，后者是man 1 printf。如果这个区域码省略，就会从1开始搜索，直到找到为止。
+man命令的第二个参数是**区域码**，用来区分索引词的范围，比如`printf`，在C标准库里面的printf跟bash当中的printf是不同的，前者的查询是man 3 printf，后者是man 1 printf。如果这个区域码省略，就会从1开始搜索，直到找到为止。
 
 命令man man可以看到详细的解释。
 
@@ -608,7 +608,7 @@ $ time read
 
 运行命令开始算起，到结束时按一下Enter，就显示出整个过程的时间，精确到ms级别。
 
-time是用来计算一个进程在运行到结束过程耗费多少时间的程序，它的输出通常有三项：
+`time`是用来计算一个进程在运行到结束过程耗费多少时间的程序，它的输出通常有三项：
 
 {% highlight bash %}
 $ time ls /opt
@@ -618,13 +618,15 @@ user    0m0.003s
 sys     0m0.007s
 {% endhighlight %}
 
+说明：
+
 * real - 指整个程序对真实世界而言运行所需时间；
 * user - 指程序在用户空间运行的时间；
 * sys  - 指程序对系统调用锁占用时间。
 
 **read** 本来是一个读取用户输入的命令，常见用法是read LINE，用户输入并回车后，键入的内容就被保存到$LINE变量内，但在键入回车前，这个命令是一直阻塞的。
 
-可见time read这命令灵活地利用了操作系统的阻塞。用这个命令来测试一壶水多久煮滚应该是不错的。
+可见`time read`这命令灵活地利用了操作系统的阻塞。用这个命令来测试一壶水多久煮滚应该是不错的。
 
 ## 31. 远程关掉一台Windows机器
 
@@ -632,7 +634,7 @@ sys     0m0.007s
 $ net rpc shutdown -I IP_ADDRESS -U username%password
 {% endhighlight %}
 
-Windows平台上的net命令是比较强大的，因为其后台是一个RPC类的系统服务，大家应该看过win下用net use \\ip\ipc$ *这样一个命令建立IPC空连接，入侵主机的事情。
+Windows平台上的net命令是比较强大的，因为其后台是一个RPC类的系统服务，大家应该看过win下用 `net use \\ip\ipc$ *` 这样一个命令建立IPC空连接，入侵主机的事情。
 
 Linux下的net命令是samba组件的程序，通常包含在smbclient内，可以跟windows主机的文件、打印机共享等服务进行通讯，但是也支持rpc命令。
 
@@ -644,7 +646,7 @@ Linux下的net命令是samba组件的程序，通常包含在smbclient内，可�
 (cd /tmp && ls)
 {% endhighlight %}
 
-当然这只是演示，要查看目录当然可以ls /tmp。
+当然这只是演示，要查看目录当然可以 `ls /tmp` 。
 
 好处就是不会改变当前shell的目录，以及如果命令中设计环境变量，也不会对当前shell有任何修改。
 
@@ -692,7 +694,7 @@ $ ping -a IP
 
 系统管理员最常做的事情是重启系统。但是服务器的重启过程往往得花上好几分钟，什么你的服务器4个scsi卡？16个硬盘？系统是Redhat？还完全安装所有组件？好吧，它重启的时间都够你吃顿饭了，所以我很想知道它什么时候回来。
 
-ping命令有个audible ping参数，-a，当它终于ping通你的服务器时会让小喇叭叫起来。
+ping命令有个`audible ping`参数，`-a`，当它终于ping通你的服务器时会让小喇叭叫起来。
 
 ## 36. 列出你最常用的10条命令
 
