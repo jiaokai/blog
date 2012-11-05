@@ -12,16 +12,16 @@
 @import url(http://fonts.googleapis.com/css?family=Electrolize);
 @import url(http://fonts.googleapis.com/css?family=Cuprum);
 body{font-size:14px;font-family:"Galdeano","Hiragino Sans GB","Microsoft YaHei",Trebuchet,"Trebuchet MS",Tahoma,"Lucida Grande","Lucida Sans Unicode",Verdana,sans-serif;color:#000000;background-color:#ffffff;}
-*{padding:0;margin: 0;border:none;outline:none;}
+/**{padding:0;margin: 0;border:none;outline:none;}*/
 a{color:#dd0000;text-decoration:none;}
 a:hover{color:#333333;text-decoration:underline;}
 hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;}
 p{padding:.3em 0;}
-ol,ul{list-style-position:inside; margin-left:1em;margin-bottom:1em;}
-ol ul, ul ol, ul ul, ol ol {margin-left:1em;}
-li a { color: #3399CC; }
-p a { color: #3399CC; }
-strong { color: #DD0000; font-weight:600; }
+/*ol,ul{list-style-position:inside; margin-left:1em;margin-bottom:1em;}*/
+/*ol ul, ul ol, ul ul, ol ol {margin-left:1em;}*/
+li a { color: #3399CC; font-weight: 600;}
+p a { color: #3399CC; font-weight: 600;}
+strong { color: #6D0000; font-weight:600; }
 pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;overflow:auto;border:1px solid #ddd;}
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
