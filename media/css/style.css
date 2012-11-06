@@ -3,7 +3,7 @@
 *
 * @author jiaokai
 * @update 2012-10-31
-* 
+*
 * |/ | (~ (~
 * |\.|._)._)
 * --------------------------------- */
@@ -19,8 +19,8 @@ hr{margin:.7em 0;border-top:1px dashed #d0d0d0;border-bottom:1px dashed #f9f9f9;
 p{padding:.3em 0;}
 /*ol,ul{list-style-position:inside; margin-left:1em;margin-bottom:1em;}*/
 /*ol ul, ul ol, ul ul, ol ol {margin-left:1em;}*/
-li a { color: #3399CC; font-weight: 600;}
-p a { color: #3399CC; font-weight: 600;}
+li a { color: #3399CC; font-weight: 400;}
+p a { color: #3399CC; font-weight: 400;}
 strong { color: #6D0000; font-weight:600; }
 pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;overflow:auto;border:1px solid #ddd;}
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
