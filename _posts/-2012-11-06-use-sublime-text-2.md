@@ -1,4 +1,4 @@
----
+-
 layout: post
 title: 使用 Sublime Text 2
 categories: [软件]
@@ -61,9 +61,5 @@ tags: [Mac, 软件, 编辑器, tips]
 ### snippet
 
 ### 书签
-
-### gists
-
-[gist](http://net.tutsplus.com/tutorials/tools-and-tips/sexy-code-snippet-management-with-gists/)
 
 
