@@ -3,14 +3,12 @@ title: Categories
 layout: page
 ---
 
-<div style="float:left;">
-    <div id='tag_cloud'>
-    {% for cat in site.categories %}
-    <a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">
-        <div class="tags-title">{{ cat[0] }}</div><div class="tags-tie">{{ cat[1].size }}</div>
-    </a>
-    {% endfor %}
-    </div>
+<div id='tag_cloud'>
+{% for cat in site.categories %}
+<a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">
+    <div class="tags-title">{{ cat[0] }}</div><div class="tags-tie">{{ cat[1].size }}</div>
+</a>
+{% endfor %}
 </div>
 
 <ul class="listing">
@@ -24,15 +22,3 @@ layout: page
 {% endfor %}
 {% endfor %}
 </ul>
-
-<script src="/media/js/jquery.tagcloud.js" type="text/javascript" charset="utf-8"></script> 
-<script language="javascript">
-$.fn.tagcloud.defaults = {
-    size: {start: 1, end: 1, unit: 'em'},
-      color: {start: '#f8e0e6', end: '#ff3333'}
-};
-
-$(function () {
-    $('#tag_cloud a').tagcloud();
-});
-</script>

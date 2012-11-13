@@ -31,7 +31,7 @@ blockquote p{margin:0;padding:.5em 0;}
 .content{font-size:1.1em;line-height:1.4em;}
 .content h1{padding:.5em 0;}
 .content img{max-width:600px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}
-#tag_cloud{margin-bottom: 1em;}
+#tag_cloud {float:left; width:100%; margin-bottom: 2em;}
 #tag_cloud a{float: left; cursor: pointer; height: 32px; line-height: 32px; background: #deeefa; white-space: nowrap;}
 #tag_cloud a:hover{color:#333333 !important;text-decoration:none;}
 #tag_cloud .tags-title {float: left; font-size: 13px; color: #333; padding: 0 46px 0 7px;}
@@ -39,20 +39,7 @@ blockquote p{margin:0;padding:.5em 0;}
 #tag_cloud a:hover { text-decoration: none; background: #5aabd5;}
 #tag_cloud a:hover .tags-title { color: #fff;}
 #tag_cloud a:hover .tags-tie { color: #606060; background: url(../img/hottags_arr.png) no-repeat 0 -50px #e5e5e5; }
-#tag_cloud span {
-/* background-color: #CCC; */
-    border: 1px solid #ccc;
-padding: 1px 5px;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-color: #888;
-position: relative;
-vertical-align: middle;
-top: -8px;
-left: -5px;
-font-size: 10px;
-}
+#tag_cloud span { border: 1px solid #ccc; padding: 1px 5px; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; color: #888; position: relative; vertical-align: middle; top: -8px; left: -5px; font-size: 10px; }
 .listing-item,.listing-seperator{list-style-type:none;}
 .listing-item a{padding:.2em 1em;}
 .listing-item time{color:#999999;}
