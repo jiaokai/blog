@@ -3,10 +3,14 @@ title: Categories
 layout: page
 ---
 
-<div id='tag_cloud'>
-{% for cat in site.categories %}
-<a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">{{ cat[0] }} ({{ cat[1].size }})</a>
-{% endfor %}
+<div style="float:left;">
+    <div id='tag_cloud'>
+    {% for cat in site.categories %}
+    <a href="#{{ cat[0] }}" title="{{ cat[0] }}" rel="{{ cat[1].size }}">
+        <div class="tags-title">{{ cat[0] }}</div><div class="tags-tie">{{ cat[1].size }}</div>
+    </a>
+    {% endfor %}
+    </div>
 </div>
 
 <ul class="listing">

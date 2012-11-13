@@ -3,10 +3,14 @@ title: Tags
 layout: page
 ---
 
-<div id='tag_cloud'>
-{% for tag in site.tags %}
-<a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">{{ tag[0] }}</a>
-{% endfor %}
+<div style="float:left;">
+    <div id='tag_cloud'>
+    {% for tag in site.tags %}
+    <a href="#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+        <div class="tags-title">{{ tag[0] }}</div><div class="tags-tie">{{ tag[1].size }}</div>
+    </a> 
+    {% endfor %}
+    </div>
 </div>
 
 <ul class="listing">
