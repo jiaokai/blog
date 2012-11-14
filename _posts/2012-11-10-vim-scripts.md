@@ -2,7 +2,7 @@
 layout: post
 title: 我使用的Vim Plugins
 categories: [Vim]
-tags: [Vim, Vim-plugins, Code]
+tags: [Vim, Vim-plugin, Code]
 ---
 
 Vim 可利用其强大的插件功能实现几乎所有现在编辑器可能想象到的功能，下面几个是我经常使用的，
