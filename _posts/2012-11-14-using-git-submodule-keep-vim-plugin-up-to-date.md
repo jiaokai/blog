@@ -24,7 +24,7 @@ tags: [Vim-plugin, Vim, Git, Github]
 
 如果在`add submodule`之前，你已经用了一个插件（比如：`vim-fugitive`），那么你得先把它删掉：
 
-{% highlight git %}
+{% highlight bash %}
 git rm -r bundle/vim-fugitive
 {% endhighlight %}
 
@@ -32,13 +32,13 @@ git rm -r bundle/vim-fugitive
 
 然后，我们添加 `vim-fugitive` 作为 `submodule`：
 
-{% highlight git %}
+{% highlight bash %}
 git submodule add git://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
 {% endhighlight %}
 
 添加 `submodule` 之后，你还得 `register` 一下：
 
-{% highlight git %}
+{% highlight bash %}
 git submodule init
 {% endhighlight %}
 
@@ -48,7 +48,7 @@ git submodule init
 
 更新submodule，使用：
 
-{% highlight git %}
+{% highlight bash %}
 git submodule update
 {% endhighlight %}
 
