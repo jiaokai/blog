@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python 包管理工具：关系与用法
+title: Python 包管理工具（关系与用法）
 categories: [Python]
 tags: [Python, Code]
 ---
@@ -34,14 +34,14 @@ tags: [Python, Code]
 最大的特点是自动查找 Python 官方维护的包源 `PyPI`，安装第三方 Python 包非常方便:
 
 {% highlight bash %}
-    # 自动从 PyPI 查找/下载/安装指定的包
-    $ easy_install MarkDown
+# 自动从 PyPI 查找/下载/安装指定的包
+$ easy_install MarkDown
 
-    # 通过 ==, >=, <=, >, < 来指定版本号
-    $ easy_install "MarkDown==2.0"
+# 通过 ==, >=, <=, >, < 来指定版本号
+$ easy_install "MarkDown==2.0"
 
-    # 升级
-    $ easy_install -U "MarkDown>=2.0,<2.0.3"
+# 升级
+$ easy_install -U "MarkDown>=2.0,<2.0.3"
 {% endhighlight %}
 
 - easy_install 不提供删除包的方法。
@@ -60,21 +60,21 @@ tags: [Python, Code]
 `pip` 解决了以上问题，已俨然成为新的事实标准，`virtualenv` 与它已经成为一对好搭档：
 
 {% highlight bash %}
-    # 安装一个包
-    $ pip install MarkDown
+# 安装一个包
+$ pip install MarkDown
 
-    # 通过 ==, >=, <=, >, < 来指定版本号
-    $ pip install "MarkDown==2.0"
+# 通过 ==, >=, <=, >, < 来指定版本号
+$ pip install "MarkDown==2.0"
 
-    # 升级一个包
-    $ pip install --upgrade "MarkDown>=2.0,<2.0.3"
-    $ pip install --upgrade "MarkDown==3.0"
+# 升级一个包
+$ pip install --upgrade "MarkDown>=2.0,<2.0.3"
+$ pip install --upgrade "MarkDown==3.0"
 
-    # 删除一个包
-    $ pip uninstall MarkDown
+# 删除一个包
+$ pip uninstall MarkDown
 
-    # 查询包
-    $ pip search "MarkDown"
+# 查询包
+$ pip search "MarkDown"
 {% endhighlight %}
 
 `pip` 支持从任意能够通过 VCS 或浏览器访问到的地址安装 Python 包
