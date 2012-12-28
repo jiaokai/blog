@@ -8,11 +8,18 @@ tags: [Linux, Server]
 - LVM
 - 软件包管理工具
     - aptitude
+- 系统配置工具
+	- vim
+	- tmux
 - 系统监视分析工具
     - htop
     - [dstat](http://dag.wieers.com/home-made/dstat/)
+    - [iftop](http://blog.licess.org/iftop/)
     - nethogs
     - netstat
+    - iptables
+    - last/lastb
+    - w
 - php/nginx/apache
     - memcached
 - 服务器压力测试
