@@ -19,9 +19,9 @@ Shell作为Unix系操作系统当中最有魅力且不可或缺的组件，经�
 
 ## 1. 以sudo运行上条命令
 
-{% highlight bash %}
-$ sudo !!
-{% endhighlight %}
+    {% highlight bash %}
+        $ sudo !!
+    {% endhighlight %}
 
 大家应该都知`sudo`，不解释。但通常出现的情况是，敲完命令执行后报错才发现忘了`sudo`。这时候，新手用户就会：按上箭头，按左箭头，盯着光标回到开始处，输入`sudo`，回车；高手用户就蛋定多了，按`Ctrl-p`，按`Ctrl-a`，输入`sudo`，回车。
 
