@@ -24,6 +24,7 @@ p a { color: #3399CC; font-weight: 400; border-bottom: 1px dotted #77bb77;}
 p a:hover{color:#3399CC;text-decoration:none;}
 /* strong { color: #6D0000; font-weight:600; } */
 /* pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;border:1px solid #ddd;} */
+pre { padding:10px; overflow:auto;}
 pre code { overflow:auto; background-color: transparent; border: none; padding: 0; word-wrap: normal; }
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
