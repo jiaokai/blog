@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Centos 6.4 Minmal 安装记录
+title: Centos 6.4 Minimal 安装记录
 categories: [CLI]
 tags: [CLI, Linux, Centos]
 ---
