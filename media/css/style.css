@@ -23,7 +23,8 @@ li a { color: #3399CC; font-weight: 400;}
 p a { color: #3399CC; font-weight: 400; border-bottom: 1px dotted #77bb77;}
 p a:hover{color:#3399CC;text-decoration:none;}
 /* strong { color: #6D0000; font-weight:600; } */
-pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;overflow:auto;border:1px solid #ddd;}
+/* pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;border:1px solid #ddd;} */
+pre code { overflow:auto; background-color: transparent; border: none; padding: 0; word-wrap: normal; }
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
@@ -56,8 +57,8 @@ h1{padding:.5em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans
 h2{padding:.6em 0 .4em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.4em;color:#111;}
 h3{padding:.5em 0 .3em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1.2em;color:#222;}
 h4{padding:.3em 0;font-family:"Cuprum","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:1em;color:#333;}
-pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:13px;}
-code{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background-color:#F7F7F7;border:1px solid #ddd; vertical-align:text-bottom;}
+pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:12px;}
+code{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; background-color:#F7F7F7;border:1px solid #eee; vertical-align:text-bottom;}
 li code, p code {background-color: #DDD; color: brown; padding: 1px 3px 0 3px; }
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
