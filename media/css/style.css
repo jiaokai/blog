@@ -24,17 +24,17 @@ p a { color: #3399CC; font-weight: 400; border-bottom: 1px dotted #77bb77;}
 p a:hover{color:#3399CC;text-decoration:none;}
 /* strong { color: #6D0000; font-weight:600; } */
 /* pre code{padding:1em 1.5em;font-size:12px;line-height:1.6;display:block;border:1px solid #ddd;} */
-pre { padding-top:10px !important; overflow:auto;}
+pre { padding-top:5px !important; overflow:auto;}
 pre,code{font-family:Menlo,"Andale Mono",Consolas,"Courier New",Monaco,monospace;font-size:12px;}
 code { background: #eee; border: 1px solid #ccc; padding: 0 5px; font-family: "Courier"; line-height: 14px; word-wrap: break-word;box-shadow: rgba(0,0,0,0.07) 0 1px 2px inset;}
-pre code { overflow:auto; background-color: transparent; border: none; padding: 0; word-wrap: break-word; }
+pre code { overflow:auto; background-color: transparent; border: none; padding: 0; word-wrap: break-word; box-shadow:none;}
 blockquote{display:block;text-align:justify;border-left:4px solid #eeeeee;}
 blockquote{margin:1em 0em;padding-left:1.5em;}
 blockquote p{margin:0;padding:.5em 0;}
 /* #container{background:#ffffff;width:660px;margin:2em auto;display:block;padding:0 2em;} */
 #container {text-align: left; overflow: hidden; position: relative}
 #main { zoom: 1; position: relative; _overflow-y: visible; max-width: 960px; width: 720px; min-height: 800px; margin: 10px auto; padding: 10px 20px; background: #FFF; border-radius: 8px; box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2); }
-#main ol li { padding-left:5px; list-style: decimal; line-height: 1.5em;box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.1); }
+#main ol li { padding-left:5px; list-style: decimal; line-height: 1.5em; }
 #content{font-size:1.1em;line-height:1.4em;}
 #content h1{padding:.5em 0;}
 #content img{max-width:700px;display:block;margin:4px auto;-webkit-box-shadow:#999 1px 1px 4px;-moz-box-shadow:#999 1px 1px 4px;box-shadow:#999 1px 1px 4px;}

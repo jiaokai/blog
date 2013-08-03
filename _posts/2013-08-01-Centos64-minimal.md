@@ -100,11 +100,11 @@ from: [http://hi.baidu.com/404656204/item/848f29d2f9231014d68ed0db](http://hi.ba
 
 关闭：
 
-    # 1. 修改`/etc/sysconfig/network`，追加：
+    # 一. 修改/etc/sysconfig/network，追加：
     NETWORKING_IPV6=no
-    # 2. 修改`/etc/hosts`,把ipv6的那句本地主机名解析的也注释掉：
+    # 二. 修改/etc/hosts,把ipv6的那句本地主机名解析的也注释掉：
     #::1   localhost localhost6 localhost6.localdomain6
-    # 3. 让系统不加载ipv6相关模块，这需要修改`modprobe`相关设定文件，为了管理方便，我们新建设定文件/etc/modprobe.d/ipv6off.conf(名字随便起)（RHEL6.0之后没有了/etc/modprobe.conf这个文件），内容如下，三种方式，总有一款适合你：
+    # 三. 让系统不加载ipv6相关模块，这需要修改modprobe相关设定文件，为了管理方便，我们新建设定文件/etc/modprobe.d/ipv6off.conf(名字随便起)（RHEL6.0之后没有了/etc/modprobe.conf这个文件），内容如下，三种方式，总有一款适合你：
     alias net-pf-10 off
     options ipv6 disable=1
     # 或者
