@@ -84,7 +84,7 @@ $(document).ready(function(){
             }
             tmpl += '</ul>';
 
-            $('body').append('<div id="menuIndex"></div>');
+            $('#container').append('<div id="menuIndex"></div>');
             $('#menuIndex').append($(tmpl)).delegate('a','click',function(e){
                 e.preventDefault();
                 var scrollNum = $(this).attr('data-top') || $('#'+$(this).attr('data-id')).offset().top;
