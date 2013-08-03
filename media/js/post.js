@@ -23,7 +23,18 @@ $(document).ready(function(){
 
     $('pre').addClass('prettyprint linenums'); //添加Google code Hight需要的class
 
-    $('.entry a').each(function(index,element){
+    // /[>**********************
+    // /[>*评论的代码也删掉哦***
+    // window.disqus_shortname = 'beiyuu'; // required: replace example with your forum shortname
+    // $('#disqus_container .comment').on('click',function(){
+        // $(this).html('加载中...');
+        // var that = this;
+        // $.getScript('http://' + disqus_shortname + '.disqus.com/embed.js',function(){$(that).remove()});
+    // });
+    // /[>*评论的代码也删掉哦***
+    // /[>**********************
+
+    $('.post a').each(function(index,element){
         var href = $(this).attr('href');
         if(href){
             if(href.indexOf('#') == 0){
@@ -128,12 +139,12 @@ $(document).ready(function(){
         }
     };
 
-    $.getScript('/js/prettify/prettify.js',function(){
+    $.getScript('/media/js/prettify/prettify.js',function(){
         prettyPrint();
         menuIndex();
     });
 
-    if(/\#comment/.test(location.hash)){
-        $('#disqus_container .comment').trigger('click');
-    }
+    // if(/\#comment/.test(location.hash)){
+        // $('#disqus_container .comment').trigger('click');
+    // }
 });

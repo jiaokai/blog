@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<section class="meta">
+<div class="meta">
     <span class="time">
       <time datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date:"%Y-%m-%d" }}</time>
     </span>
@@ -23,11 +23,11 @@ layout: default
         {% endfor %}
     </span>
     {% endif %}
-</section>
+</div>
 
-<section class="post">
+<div class="post">
     {{ content }}
-</section>
+</div>
 
 {% include comments.md %}
 
