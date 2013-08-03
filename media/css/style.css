@@ -60,3 +60,11 @@ li code, p code {background-color: #DDD; color: brown; padding: 1px 3px 0 3px; }
 embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
 .comment { padding: 20px 0; margin-top: 20px; border-top: 2px dotted rgba(0,0,0,0.3);}
+
+#menuIndex { position: fixed; top: 60px; right: 20px; width: 200px; overflow: auto; }
+#menuIndex ul {list-style: none;}
+#menuIndex ul li.on { background-color: #ddd; border-radius: 5px; }
+#menuIndex a { display: block; padding: 2px 0; }
+#menuIndex ul li { font-size: 12px; margin-bottom: 5px; word-wrap: break-word; padding-left: 20px; }
+#menuIndex li.h1 { font-size: 14px; font-weight: normal; padding-left: 10px; margin-bottom: 10px; }
+#menuIndex li.h3 { padding-left: 35px; }
