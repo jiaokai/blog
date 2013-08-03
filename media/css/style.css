@@ -63,9 +63,9 @@ embed,object,iframe{display:block;margin:4px auto;}
 .gist{font-size: 12px;line-height:1.6;}
 .comment { padding: 20px 0; margin-top: 20px; border-top: 2px dotted rgba(0,0,0,0.3);}
 
-#menuIndex { position: fixed; top: 60px;margin-left:720px; width: 200px; overflow: auto;text-transform: uppercase; background-color:#fff;border-radius: 0 8px 8px 0 !important; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; border-left: none; text-align: left; cursor: pointer; }
-#menuIndex ul {list-style: none;}
-#menuIndex ul li.on { background-color: #ddd; border-radius: 5px;-webkit-transition:color .2s linear; }
+#menuIndex { position: fixed; top: 60px;margin-left:740px; width: 200px; overflow: auto; background-color:#fff;border-radius: 0 8px 8px 0 !important; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; border-left: none; text-align: left; cursor: pointer; }
+#menuIndex ul {list-style: none; padding:0;}
+#menuIndex ul li.on { background-color: #eee; -webkit-transition:color .2s linear; }
 #menuIndex a { display: block; padding: 2px 0; }
 #menuIndex ul li { font-size: 12px; margin-bottom: 5px; word-wrap: break-word; padding-left: 20px; }
 #menuIndex li.h1 { font-size: 14px; font-weight: normal; padding-left: 10px; margin-bottom: 10px; }
